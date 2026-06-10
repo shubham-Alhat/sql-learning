@@ -61,3 +61,47 @@ VALUES
 ```
 
 this is how you add multiple rows in one table
+
+4. Now we want to read the data.
+
+```sql
+SELECT * FROM users;
+
+-- All users will be users return here
+```
+
+```sql
+SELECT username,email FROM users WHERE users.email = 'shubham@gmail.com'
+```
+
+this query will return username and email of user whose email = 'shubham@gmail.com'
+
+5. now updating the data in tables.
+
+```sql
+UPDATE users SET password = 2026 WHERE users.email = 'shubham@gmail.com';
+```
+
+this will update the password of user whose email = 'shubham@gmail.com'
+
+```sql
+UPDATE users
+SET age = 29, gender = 'male', dob = '1995-03-10'
+WHERE username = 'swayam';
+```
+
+6. deleting data in tables
+
+```sql
+DELETE FROM users WHERE id = 1;
+```
+
+the above query will delete the users where id = 1, so shubham user is deleted because it has id = 1.
+
+what if i ran following query.
+
+```sql
+DELETE FROM users
+```
+
+Note - this will delete all rows in users table
