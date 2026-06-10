@@ -41,6 +41,12 @@ ALTER TABLE users
 
 this is how we can write query when we want to add multiple columns
 
+```sql
+ALTER TABLE users ALTER COLUMN "password" TYPE VARCHAR(200) USING password::TEXT
+```
+
+this is how can i change the type/schema of columns in tables
+
 3. Till now, we are doing operations on table and now we will be doing operations/interactions with the data in tables.
 
 how can i insert data in table. see below code
