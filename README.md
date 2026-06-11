@@ -111,3 +111,60 @@ DELETE FROM users
 ```
 
 Note - this will delete all rows in users table
+
+---
+
+# Relations and JOINS in MYSQL
+
+> _How actually SQL execution flow looks like_  
+> FROM → JOIN → WHERE → GROUP BY → HAVING → SELECT
+
+---
+
+see the image below of a complex query.
+
+![alt text](image.png)
+
+After the JOIN, before GROUP BY, MySQL sees this raw combined table:
+
+```
+first_name    last_name    amount
+John          Doe          400
+Robert        Luna         250
+David         Robinson     12000
+John          Reinhardt    400
+John          Reinhardt    300    ← same customer, 2nd order
+```
+
+Without `GROUP BY`, this is what SELECT would return — 5 rows, John Reinhardt appearing twice.
+
+`GROUP BY c.customer_id` tells MySQL:
+
+> "Collapse all rows with the same customer_id into ONE row"
+
+So after GROUP BY:
+
+```
+first_name      last_name       amount (grouped)
+John            Doe             [400]
+Robert          Luna            [250]
+David           Robinson        [12000]
+John            Reinhardt       [400, 300]  ← collapsed into one row
+```
+
+Now `SUM(o.amount)` adds up each group's amounts:
+
+```
+John Doe       → 400
+Robert Luna    → 250
+David Robinson → 12000
+John Reinhardt → 700   ← 400 + 300
+```
+
+Then `HAVING SUM > 500` filters, leaving only David and John Reinhardt.
+
+---
+
+**One line summary:**
+
+> GROUP BY collapses duplicate rows into one. Aggregate functions like SUM/COUNT/AVG then operate on each group.
