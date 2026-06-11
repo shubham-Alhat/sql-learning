@@ -168,3 +168,15 @@ Then `HAVING SUM > 500` filters, leaving only David and John Reinhardt.
 **One line summary:**
 
 > GROUP BY collapses duplicate rows into one. Aggregate functions like SUM/COUNT/AVG then operate on each group.
+
+This query explains three conecpts you learn. see the query.
+
+```sql
+--Get the first name, last name, total amount spent, and shipping status of each customer. Only include customers who have both an order and a shipping record. Only show customers whose total spending is above 300.
+
+SELECT c.first_name,c.last_name,SUM(o.amount) AS total_spent,s.status FROM customers c
+  JOIN orders o ON c.customer_id = o.customer_id
+  JOIN shippings s ON c.customer_id = s.customer
+  GROUP BY c.customer_id HAVING SUM(o.amount) > 300
+
+```
