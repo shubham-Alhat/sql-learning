@@ -1,26 +1,30 @@
 <template>
-  <div class="todo-container">
-    <div class="todo-form">
-      <v-text-field hide-details density="compact" />
-
-      <v-btn color="primary">Add</v-btn>
+  <div class="container">
+    <div class="row">
+      <div class="col-12">TODO using VueJS</div>
     </div>
-
-    <div class="todo-list">
-      <div class="single-row" v-for="(todo, index) in todos" :key="index">
-        <input type="checkbox" />
-        <span class="todo-text done">{{ todo.title }}</span>
-        <div class="actions">
-          <button>✏️</button>
-          <button v-on:click="deleteTodo(todo)">🗑️</button>
-        </div>
+    <div class="row">
+      <div class="col-12 col-lg-6">
+        <ul class="list-group">
+          <Todo
+            v-for="(todo, index) in todos"
+            :key="index"
+            :todoString="todo.title"
+            :completed="todo.completed"
+          />
+        </ul>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import Todo from "./todo.vue";
+
 export default {
+  components: {
+    Todo,
+  },
   data() {
     return {
       todos: [
