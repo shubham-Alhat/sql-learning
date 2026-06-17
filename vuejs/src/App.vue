@@ -24,6 +24,7 @@
       :count="count"
       @incrementByChild="incrementCount"
       @decrementByChild="decrementCount"
+      @incrementByFiveNumber="incrementByFive"
     />
   </div>
 </template>
@@ -45,6 +46,10 @@ export default {
     },
     decrementCount() {
       this.count--;
+    },
+    incrementByFive(data) {
+      console.log(data);
+      this.count = this.count + Number(data);
     },
   },
 };

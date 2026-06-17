@@ -19,19 +19,28 @@
     >
       -1
     </button>
+    <button
+      @click="incrementByFive"
+      class="bg-black px-1.5 py-1 rounded-[6px] hover:opacity-95 transition transition-all cursor-pointer"
+    >
+      +5
+    </button>
   </div>
 </template>
 
 <script>
 export default {
   props: ["count"],
-  emits: ["incrementByChild", "decrementByChild"],
+  emits: ["incrementByChild", "decrementByChild", "incrementByFiveNumber"],
   methods: {
     sendIncrementEvent() {
       this.$emit("incrementByChild");
     },
     sendDecrementEvent() {
       this.$emit("decrementByChild");
+    },
+    incrementByFive() {
+      this.$emit("incrementByFiveNumber", 5);
     },
   },
 };
