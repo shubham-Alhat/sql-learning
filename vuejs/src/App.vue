@@ -19,6 +19,7 @@
         </button>
       </div>
     </div>
+    <div class="mt-3 p-2 text-blue-200 font-medium">{{ statusMessage }}</div>
   </div>
 </template>
 <script>
@@ -34,6 +35,14 @@ export default {
     },
     decrementCount() {
       this.count--;
+    },
+  },
+
+  computed: {
+    statusMessage() {
+      if (this.count > 0) return "Positive";
+      if (this.count < 0) return "Negative";
+      if (this.count == 0) return "Zero";
     },
   },
 };
