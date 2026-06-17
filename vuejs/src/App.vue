@@ -19,7 +19,15 @@
         </button>
       </div>
     </div>
-    <div class="mt-3 p-2 text-blue-200 font-medium">{{ statusMessage }}</div>
+    <div class="mt-2 text-blue-200 font-medium">{{ statusMessage }}</div>
+    <hr class="w-full h-[1px] mt-1.5 bg-black" />
+    <div id="watcher-example" class="mt-4">
+      <input
+        v-model="userInput"
+        type="text"
+        class="bg-black text-white px-2 py-1 min-w-[200px] border border-[1px] rounded-[6px]"
+      />
+    </div>
   </div>
 </template>
 <script>
@@ -27,6 +35,7 @@ export default {
   data() {
     return {
       count: 0,
+      userInput: "",
     };
   },
   methods: {
@@ -43,6 +52,11 @@ export default {
       if (this.count > 0) return "Positive";
       if (this.count < 0) return "Negative";
       if (this.count == 0) return "Zero";
+    },
+  },
+  watch: {
+    userInput(newValue, oldValue) {
+      console.log(`User type : ${newValue}`);
     },
   },
 };
