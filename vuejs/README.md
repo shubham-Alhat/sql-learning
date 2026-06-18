@@ -118,7 +118,7 @@ Here, whenever we click incre or decre, `count` changes, and statusMessage rerun
 **We should use watcher whenever we want to trigger a function or action when data property changes.**
 
 Here, `watcher` allows to track/monitor the data (state var) and as change occur in data variable, the watcher callback fires.
-The watcher's function name (userInput) has to exactly match the data property you want to watch. Vue automatically calls it with (newValue, oldValue) whenever that property changes.
+The watcher's function name (userInput) has to exactly match the data property you want to watch/monitor. Vue automatically calls it with (newValue, oldValue) whenever that property changes.
 
 ```vue
 <template>

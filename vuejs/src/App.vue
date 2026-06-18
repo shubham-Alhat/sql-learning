@@ -27,18 +27,24 @@
       @incrementByFiveNumber="incrementByFive"
     />
   </div>
+  <Lifecycle />
 </template>
 <script>
 import Child from "./components/child.vue";
+import Lifecycle from "./components/lifecycle.vue";
 
 export default {
   components: {
     Child,
+    Lifecycle,
   },
   data() {
     return {
       count: 0,
     };
+  },
+  updated() {
+    console.log("dom updated..", this.count);
   },
   methods: {
     incrementCount() {
